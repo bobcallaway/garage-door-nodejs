@@ -1,0 +1,72 @@
+{
+    "2": {
+        "type":"hardwired",
+        "name":"Front Door"
+    },
+    "3": {
+        "type":"hardwired",
+        "name":"Office Windows"
+    },
+    "4": {
+        "type":"hardwired",
+        "name":"Master Bathroom Window"
+    },
+    "5": {
+        "type":"hardwired",
+        "name":"Master Bedroom Windows"
+    },
+    "6": {
+        "type":"hardwired",
+        "name":"Family Room Windows"
+    },
+    "7": {
+        "type":"hardwired",
+        "name":"Back Porch Door"
+    },
+    "8": {
+        "type":"hardwired",
+        "name":"Kitchen Windows"
+    },
+    "9": {
+        "type":"wireless",
+        "name":"Shed Door",
+        "serial":"0647002",
+        "loop":2
+    },
+    "10": {
+        "type":"hardwired",
+        "name":"Downstairs Half Bathroom Window"
+    },
+    "11": {
+        "type":"hardwired",
+        "name":"Laundry Room Window"
+    },
+    "12": {
+        "type":"hardwired",
+        "name":"Dining Room Windows"
+    },
+    "13": {
+        "type":"hardwired",
+        "name":"Window at Bottom of Carpet Stairs"
+    },
+    "14": {
+        "type":"hardwired",
+        "name":"Interior Door to Garage"
+    },
+    "15": {
+        "type":"hardwired",
+        "name":"Crawl Space Door"
+    },
+    "17": {
+        "type":"wireless",
+        "name":"Garage Door",
+        "serial":"0810794",
+        "loop":1
+    },
+    "18": {
+        "type":"wireless",
+        "name":"Side Door into Garage",
+        "serial":"0810794",
+        "loop":2
+    }
+}
