@@ -4,22 +4,25 @@
     $result = "failed";
     $message = "";
 
-    if ($_GET["key"]) {
-	try {
+    if ($_GET["key"] and $_GET["command"]) {
+        try {
             $topicArn = "arn:aws:sns:us-east-1:990510411818:bells-walk-garage-door";
-            
+
             $AmazonSNS = new AmazonSNS("AKIAJDLWE5IHVSJBQD2Q",htmlspecialchars($_GET["key"]));
-            
-            $AmazonSNS->publish($topicArn, '{ message: "operate" }');
-            
+
+            $AmazonSNS->publish($topicArn, "{ \"command\": \"" . $_GET["command"] . "\" }");
+
             $result = "issued";
-            $message = "door command triggered";
+            $message = "Command " . $_GET["command"] . " triggered";
         } catch (Exception $e) {
             $message = $e->getMessage();
-	}
+        }
     }
-    else {
+    else if ($_GET["command"]){
         $message = "no key specified";
+    }
+    else if ($_GET["key"]){
+        $message = "no command specified";
     }
 ?>
 <html>
