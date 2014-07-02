@@ -15,6 +15,14 @@ var push = new pushover({ token: pushoverConfig.token, user: pushoverConfig.user
 
 // BEGIN ALARM CODE
 var zoneInfo = require('./zone_info.json'), Alarm = require('ad2usb');
+var maxZone = 0;
+for (var zone in zoneInfo) {
+    var myInt = parseInt(zone,10);
+    if (myInt > maxZone) {
+        maxZone = myInt;
+    }
+}
+
 var alarm = Alarm.connect('127.0.0.1', 10000, function() {
 
     function scheduleFaultRemovalDetection(zoneNumber) {
@@ -22,8 +30,8 @@ var alarm = Alarm.connect('127.0.0.1', 10000, function() {
             clearTimeout(zoneInfo[zoneNumber].removeTask);
         }
         else {
-            push.send("Alarm notification", "Fault detected - "+zoneInfo[zoneNumber].name, -1);
-            console.log("called push -1");
+            push.send("Alarm notification", "Fault detected - "+zoneInfo[zoneNumber].name, -2);
+            console.log("called push -2");
         }
         zoneInfo[zoneNumber].removeTask = setTimeout(
             function faultRemoved(zoneNumber) {
@@ -78,7 +86,7 @@ var alarm = Alarm.connect('127.0.0.1', 10000, function() {
     });
 
     alarm.on('fault', function(zoneNumber) {
-        if (zoneNumber > 1) {
+        if ((zoneNumber > 1) && (zoneNumber <= maxZone)) {
             console.log('Fault in zone ' + zoneNumber + ': ' + zoneInfo[zoneNumber].name);
             scheduleFaultRemovalDetection(zoneNumber);
         }
@@ -130,7 +138,7 @@ function readMessage() {
                     }
                     else {
                         alarm[command.command](alarmCode.code);
-                        push.send("Alarm command '"+command.command+"'", "Success!");
+                        push.send("Alarm command '"+command.command+"'", "Success!",1);
                     }
                 }
                 else {
