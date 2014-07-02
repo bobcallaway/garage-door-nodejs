@@ -8,7 +8,7 @@
 	try {
             $topicArn = "arn:aws:sns:us-east-1:990510411818:bells-walk-garage-door";
             
-            $AmazonSNS = new AmazonSNS("AKIAIPADUMAIHXBKKNKQ",htmlspecialchars($_GET["key"]));
+            $AmazonSNS = new AmazonSNS("AKIAJDLWE5IHVSJBQD2Q",htmlspecialchars($_GET["key"]));
             
             $AmazonSNS->publish($topicArn, '{ message: "operate" }');
             
